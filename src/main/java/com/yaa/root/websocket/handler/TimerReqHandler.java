@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.ChannelContext;
 import org.tio.core.Tio;
+import org.tio.utils.lock.SetWithLock;
 import org.tio.websocket.common.WsRequest;
 import org.tio.websocket.common.WsResponse;
 
@@ -64,7 +65,11 @@ public class TimerReqHandler extends ServerProcessor {
 		public void run() {
 			while (true) {
 				try {
-					int count = Tio.getChannelContextsByGroup(channelContext.getGroupContext(),channelReq.getChannel()).getObj().size();
+					SetWithLock<ChannelContext> o = Tio.getChannelContextsByGroup(channelContext.getGroupContext(),channelReq.getChannel());
+					int count = 0;
+					if(o != null) {
+						count = o.getObj().size();
+					}
 					logger.info("当前订阅数量：" + count);
 					WsResponse response = WsResultUtil.buildResponseByText("定时发送消息");
 					Tio.sendToGroup(channelContext.getGroupContext(), channelReq.getChannel(), response);

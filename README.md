@@ -7,20 +7,20 @@
 客户端用的js
 
 ``code
+
     var ws = new WebSocket("ws://192.168.0.169:9326");
-
+    
     ws.onopen = function (event) {
+        console.log(event)
     };
-
     ws.onmessage=function (event) {
-        appendToDashboard("收到消息："+event.data);
+        console.log("收到消息："+event.data);
     };
-
     ws.onclose=function (event) {
-        appendToDashboard(event.data);
+        console.log(event.data);
     };
-
     ws.onerror=function (event,e) {
-        appendToDashboard(event.data);
+        console.log(event.data);
     };
+    
 ``

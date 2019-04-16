@@ -6,7 +6,6 @@
 
 客户端用的js
 
-``code
 
     var ws = new WebSocket("ws://192.168.0.169:9326");
     
@@ -23,4 +22,3 @@
         console.log(event.data);
     };
     
-``

@@ -24,18 +24,17 @@ public class ServerListener extends WsServerAioListener {
 
 	@Override
 	public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess) throws Exception {
-		super.onAfterSent(channelContext, packet, isSentSuccess);
 	}
 
 	@Override
 	public void onBeforeClose(ChannelContext channelContext, Throwable throwable, String remark, boolean isRemove) throws Exception {
-		super.onBeforeClose(channelContext, throwable, remark, isRemove);
+//		super.onBeforeClose(channelContext, throwable, remark, isRemove);
 //		ServerConfig.processor.onBeforeClose(channelContext, throwable, remark, isRemove);
 	}
 
 	@Override
 	public void onAfterDecoded(ChannelContext channelContext, Packet packet, int packetSize) throws Exception {
-		super.onAfterDecoded(channelContext, packet, packetSize);
+//		super.onAfterDecoded(channelContext, packet, packetSize);
 //		if (log.isInfoEnabled()) {
 //			log.info("onAfterDecoded\r\n{}\r\n{}", packet.logstr(), channelContext);
 //		}
@@ -43,12 +42,12 @@ public class ServerListener extends WsServerAioListener {
 
 	@Override
 	public void onAfterReceivedBytes(ChannelContext channelContext, int receivedBytes) throws Exception {
-		super.onAfterReceivedBytes(channelContext, receivedBytes);
+//		super.onAfterReceivedBytes(channelContext, receivedBytes);
 	}
 
 	@Override
 	public void onAfterHandled(ChannelContext channelContext, Packet packet, long cost) throws Exception {
-		super.onAfterHandled(channelContext, packet, cost);
+//		super.onAfterHandled(channelContext, packet, cost);
 //		if (log.isInfoEnabled()) {
 //			log.info("onAfterHandled\r\n{}\r\n{}", packet.logstr(), channelContext);
 //		}

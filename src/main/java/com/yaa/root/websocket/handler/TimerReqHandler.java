@@ -63,7 +63,7 @@ public class TimerReqHandler extends ServerProcessor {
 		public void run() {
 			while (true) {
 				try {
-					int count = Tio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+					int count = Tio.getChannelContextsByGroup(channelContext.getGroupContext(),channelReq.getChannel()).getObj().size();
 					logger.info("当前订阅数量：" + count);
 					WsResponse response = WsResultUtil.buildResponseByText("定时发送消息");
 					Tio.sendToGroup(channelContext.getGroupContext(), channelReq.getChannel(), response);

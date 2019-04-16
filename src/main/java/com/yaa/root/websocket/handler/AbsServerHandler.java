@@ -23,7 +23,6 @@ public abstract class AbsServerHandler implements IWsMsgHandler {
      * @param httpResponse
      * @param channelContext
      * @throws Exception
-     * @author tanyaowu
      */
     @Override
     public void onAfterHandshaked(HttpRequest httpRequest, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {

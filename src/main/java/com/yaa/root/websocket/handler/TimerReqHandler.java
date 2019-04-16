@@ -36,6 +36,7 @@ public class TimerReqHandler extends ServerProcessor {
 		logger.info("Channel[" + channel + "] subscribed");
 		lock.lock();
 		try {
+			//保持一个线程运行
 			TimerTread timerTread = timerMap.get(channel);
 			if (timerTread == null) {
 				timerTread = new TimerTread(1000l, channelContext, channelReq);

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket 测试</title>
+    <style>
+    </style>
+</head>
+<body>
+<div style="width:40%; float:left">
+    <button onclick="timerReq()">订阅定时消息</button><br/>
+    <button onclick="GenReq()">平常推送</button><br/>
+</div>
+<div id="dashboard" style="width:60%; height: 800px; float:left; background: black; color: #eeeeee;overflow-y: scroll;"></div>
+</body>
+<script>
+
+    var ws = new WebSocket("ws://192.168.0.169:9326");
+
+    ws.onopen = function (event) {
+    };
+
+    ws.onmessage=function (event) {
+        appendToDashboard("收到消息："+event.data);
+    };
+
+    ws.onclose=function (event) {
+        appendToDashboard(event.data);
+    };
+
+    ws.onerror=function (event,e) {
+        appendToDashboard(event.data);
+    };
+
+
+    function timerReq() {
+        appendToDashboard("发送消息：{\"channel\":\"channel_timer\"}");
+        ws.send("{\"channel\":\"channel_timer\"}");
+    }
+
+    function GenReq() {
+        appendToDashboard("发送消息：{\"channel\":\"channel_general\"}");
+        ws.send("{\"channel\":\"channel_general\"}");
+    }
+
+    function appendToDashboard(text) {
+        var tag = document.createElement("p");
+        tag.innerHTML = text;
+        document.getElementById("dashboard").appendChild(tag);
+    }
+
+</script>
+</html>
